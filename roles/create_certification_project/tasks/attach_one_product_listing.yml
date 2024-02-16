@@ -1,17 +1,6 @@
 ---
-- name: Validate cert_listings required to attach product listing
-  ansible.builtin.assert:
-    that: "{{ item }} is defined"
-    fail_msg: "The parameter {{ item }} is required to attach product listing"
-    success_msg: "All required parameters are ok, proceeding to attach product listing"
-  with_items:
-    - cert_listings.published
-    - cert_listings.type
-    - cert_listings.pyxis_product_list_identifier
-
-- name: Set pyxis_product_list_identifier if cert product list is already here
-  ansible.builtin.set_fact:
-    pyxis_product_list_identifier: "{{ cert_listings.pyxis_product_list_identifier }}"
+- name: Retrieve all certification projects attached to Product Listing ID
+  ansible.builtin.include_tasks: get_all_projects_for_product_listing.yml
 
 - name: Set and save project IDs to use with Product-list-Attach For CNF project
   ansible.builtin.set_fact:

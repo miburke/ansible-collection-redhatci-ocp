@@ -14,7 +14,7 @@
   vars:
     pyxis_apikey: "{{ lookup('file', pyxis_apikey_path) }}"
   ansible.builtin.uri:
-    url: "{{ verify_project_url }}/{{ organization_id }}/projects/certification?page_size={{ page_size }}&page=0"
+    url: "{{ verify_project_url }}/{{ organization_id }}/projects/certification?filter=project_status%21%3Darchived&page_size={{ page_size }}&page=0"
     method: GET
     headers:
       X-API-KEY: "{{ pyxis_apikey }}"

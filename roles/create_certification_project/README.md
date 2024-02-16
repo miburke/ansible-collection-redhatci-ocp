@@ -58,7 +58,7 @@ repository_description     | "Add a description of project here"  | This will be
 
 Name                          | Default                              | Description
 ----------------------------- | ------------------------------------ | -------------
-pyxis_product_list_identifier | None                                 | Product-listing ID, it has to be created before [See doc](https://redhat-connect.gitbook.io/red-hat-partner-connect-general-guide/managing-your-account/product-listing)
+pyxis_product_lists           | None                                 | A list of Product-listing IDs, it has to be created before [See doc](https://redhat-connect.gitbook.io/red-hat-partner-connect-general-guide/managing-your-account/product-listing). It could contain one or many PLs.
 published                     | false                                | Boolean to enable publishing list of products
 type                          | "container stack"                    | String. Type of product list
 attach_product_listing        | false                                | If set to true, it would attach product-listing to all old + new cert projects that used same product-listing ID
@@ -134,7 +134,9 @@ cert_settings:
 cert_listings:
   published: false
   type: "container stack"
-  pyxis_product_list_identifier: "yyyyyyyyyyyyyyyyy"
+  pyxis_product_lists:
+    - "yyy"
+    - "xxx"
   attach_product_listing: false
 
 # Optional; provide it when you need to submit test results.
